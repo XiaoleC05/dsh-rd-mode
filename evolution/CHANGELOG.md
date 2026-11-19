@@ -13,3 +13,11 @@
 - 预期：K1 平均每次请求上下文从 319,202 降到 ≤ 120,000；K3 超过 200k 的请求从 66.2% 降到 ≤ 5%；K9–K11 流程合规 ≥ 90%。
 - 发布前经三路独立复核（DSH 事实核查、按 INIT 模拟执行、宪章对抗审查），共 60 条意见、无阻断项，已修订：§8 红线优先于用户指令且明确“点名即同意”；项目规则只在风格与命令上优先；L3 规格卡与计划一次批准、计划模式下统一用 exit_plan_mode；验收结论增加 UNVERIFIED，复审改用 send_message；子代理约定（不分级、不委派、不提问、不提交）；长任务改为前台运行并一次等待；不再重复读取已注入的 AGENTS.md；L0/L1 不加载技能；GBK/UTF-16 文件的读取例外；KPI 改按任务段统计并加回归测试；复盘不读取会话原文；INIT 补全各分支与用户确认步骤。
 - 来源：docs/DESIGN.md。安装前已在隔离的 DSH 0.2.2-rc.5 宿主中验证三个预设均激活成功（无 broken）。
+
+## 0.2.0｜2026-11-20｜C3（插件与宿主）
+- 引入 context7 文档检索 MCP：新增宿主层配置型 bundle `@local/context7-mcp`（D:/05_Code/dsh-context7-mcp），插入一行 `@deepseek-ai/dsh-mcp-client`（serverName=context7，stdio，命令 `cmd /c npx -y @upstash/context7-mcp@4.7.3`，failOnStartupError=true）。
+- 安装：以 link: 装入当前 profile，plugin_manager 返回 applied（warnings 空）；bundle enabled/installed 均为 true，无 error。
+- 验证：`mcp__context7__resolve-library-id` 与 `mcp__context7__query-docs` 可用，对 React 返回真实库 ID 与版本；另新增 3 个资源工具（list/read resources 与 templates）。
+- 计量：工具定义 +5（2 个服务器工具 + 3 个资源工具），估算约 +750 token/请求（按每工具约 150 token）。条目为宿主层能力，不改预设与技能。
+- 影响：K1/K2 轻微上升（约 +0.75k/请求），换取最新文档检索能力；当前所有模式可见，若要限制为只在研发模式，需改为预设内 mcp-client 行（C2 提案）。
+- 来源：INIT.md 6.5，用户同意试用后保留；评估卡与理由见 evolution/registry.md。

@@ -16,6 +16,11 @@
 | Office 工具 | tool-office | 只在加载 office 技能后出现，平时零成本 |
 | 插件管理与插件市场 | tool-plugin-manager、tool-plugin-market | 生态引入流程需要；市场工具只在用户启用市场插件后出现 |
 
+## 已采纳（宿主层 bundle）
+| 能力 | bundle／行 id | 理由 |
+|---|---|---|
+| context7 文档检索 MCP | @local/context7-mcp／context7-mcp（@deepseek-ai/dsh-mcp-client，serverName=context7，stdio：`cmd /c npx -y @upstash/context7-mcp@4.7.3`） | 库与框架的最新官方文档检索；2 个服务器工具 + 3 个资源工具，约 +750 token/请求；2026-11-20 试用通过（resolve-library-id 返回真实库 ID）后保留。评估卡合计 8（必要性 2、成本 1、风险 1、重叠 2、可逆性 2），无 0 分项 |
+
 ## 暂缓或拒绝
 | 能力 | 状态 | 理由与重新评估条件 |
 |---|---|---|

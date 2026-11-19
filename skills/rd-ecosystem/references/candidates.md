@@ -28,7 +28,7 @@ DSH 只扫描这些位置：`<项目根>\.dsh\skills`、`<项目根>\.agents\ski
 ## C MCP 服务器（来自用户 Claude Code 的配置，DSH 中尚未接入）
 | 服务器 | 命令 | 工具数 | 价值与建议 |
 |---|---|---|---|
-| context7 | cmd /c npx -y @upstash/context7-mcp@<确切版本> | 2 | 查询库的最新官方文档，价值高、成本低，第一优先试用 |
+| context7 | cmd /c npx -y @upstash/context7-mcp@4.7.3 | 2 | 查询库的最新官方文档，价值高、成本低，第一优先试用。**2026-11-20 已采纳**：安装为宿主层 bundle @local/context7-mcp（见 evolution/registry.md 与 CHANGELOG 0.2.0） |
 | playwright（用户未配置） | cmd /c npx -y @playwright/mcp@<确切版本> | 约 20+ | 真实浏览器，用于网站验证；常驻成本高，建议做成单独的网站验证模式或按需启用 |
 | github | cmd /c npx -y @modelcontextprotocol/server-github | 26 | 需要 GITHUB_PERSONAL_ACCESS_TOKEN；大部分场景用 git + gh 命令即可 |
 | codebase-memory | codebase-memory-mcp | 14 | 大型仓库的代码图谱检索；仓库很大时再试 |
