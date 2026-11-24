@@ -21,3 +21,10 @@
 - 计量：工具定义 +5（2 个服务器工具 + 3 个资源工具），估算约 +750 token/请求（按每工具约 150 token）。条目为宿主层能力，不改预设与技能。
 - 影响：K1/K2 轻微上升（约 +0.75k/请求），换取最新文档检索能力；当前所有模式可见，若要限制为只在研发模式，需改为预设内 mcp-client 行（C2 提案）。
 - 来源：INIT.md 6.5，用户同意试用后保留；评估卡与理由见 evolution/registry.md。
+
+## 0.3.0｜2026-11-24｜C3（插件与宿主）
+- 新增可选 bundle `@local/dsh-rd-mode-cards`（`ui/preset-cards/`）：以客户端插件替换设置页的 `agent-presets` 槽位，为 rd / rd-scout / rd-review 三张卡片补上「模式说明 / 如何使用」，展示与内置模式一致。
+- 实现：`scripts/vendor-preset-cards.mjs` 从已安装的 `@deepseek-ai/dsh-client-ui-agent-preset` 提取浏览器产物，追加三条指南、放宽 `presetGuide` 判定、改用自有 locale 命名空间 `settings.rdPreset`，并去掉会与内置插件重复的三处界面注册（新会话芯片、会话头标签、插件菜单）。产物 `ui/preset-cards/client.js`（153 KB）含 MIT 归属说明。
+- 安装：以 link: 装入 profile，plugin_manager 返回 applied（warnings 空）；bundle enabled/installed 均为 true，无 error，row `rd-mode-cards` 已激活。
+- 影响：只改变 Web 设置页的卡片展示，不改变预设组合、工具与会话行为；DSH 升级后运行生成脚本重新生成 client.js，锚点不匹配即说明内在界面已变化。
+- 来源：用户要求「让卡片的展示效果模式与内置的模式相同」；之前的分析确认内置按钮只对四个内置 id 硬编码，自定义预设无配置字段可用。

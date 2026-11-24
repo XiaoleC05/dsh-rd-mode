@@ -19,3 +19,12 @@ DeepSeek Harness 的研发专用模式：任务分级流水线、验收关卡、
 | 最近 7 天 KPI（用 DSH 自带运行时） | `pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/node.ps1 scripts/rd-kpi.mjs --days 7` |
 | 全部历史作为对照 | `pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/node.ps1 scripts/rd-kpi.mjs --days 0 --presets all` |
 | KPI 脚本回归测试（node ≥ 22.15） | `node --test scripts/test/rd-kpi.test.mjs` |
+
+## 可选：模式卡片增强
+`ui/preset-cards/` 是一个独立的本地 bundle，让研发模式的三张卡片与内置模式一样显示「模式说明 / 如何使用」。安装：
+
+```
+plugin_manager install_bundle target=D:/05_Code/dsh-rd-mode/ui/preset-cards
+```
+
+DSH 升级后运行 `node scripts/vendor-preset-cards.mjs` 重新生成 `ui/preset-cards/client.js`。实现原理与授权归属见 [ui/preset-cards/docs/DETAIL.md](ui/preset-cards/docs/DETAIL.md)。

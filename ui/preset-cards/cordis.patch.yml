@@ -1,0 +1,12 @@
+# 研发模式卡片增强 — 配置型 + 客户端 bundle。
+#
+# 插入一行本地插件：它的客户端半（client.js，由 scripts/vendor-preset-cards.mjs
+# 从已安装的 @deepseek-ai/dsh-client-ui-agent-preset 生成）复用内置 Agent 预设
+# 设置页，并为 rd / rd-scout / rd-review 三张卡片补上「模式说明 / 如何使用」。
+#
+# 停用：plugin_manager set_bundle target=@local/dsh-rd-mode-cards enabled=false
+# 移除：plugin_manager remove_bundle target=@local/dsh-rd-mode-cards
+# 重建：node scripts/vendor-preset-cards.mjs（DSH 升级后运行）
+- insert:
+    - id: rd-mode-cards
+      name: '@local/dsh-rd-mode-cards'

@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "R&D mode cards",
+    "description": "Adds the pattern explanation and usage guide to the three R&D preset cards, matching the built-in preset cards.",
+    "detail": "docs/DETAIL.md"
+  }
+}
